@@ -42,7 +42,7 @@ $(document).ready(function () {
             }
         }
     })
-    
+
     $('.product').owlCarousel({
         loop: true,
         margin: 20,
@@ -64,7 +64,10 @@ $(document).ready(function () {
             }
         }
     })
-     
+    setInterval(()=>{
+        $(".carousel-control-next-icon").click();
+    }, 3000);
+        
     var owl = $('.owl-carousel');
     owl.owlCarousel();
     $('.owl-next').click(function() {
