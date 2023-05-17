@@ -1,3 +1,6 @@
+{{
+  session(['prePage' => '/']);
+}}
 <!doctype html>
 <html lang="en">
 
@@ -11,8 +14,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="{{asset('css/user/header.css')}}">
-    <link rel="stylesheet" href="{{asset('css/user/footer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/module/header.css')}}">
+    <link rel="stylesheet" href="{{asset('css/module/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/user/homepage.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
@@ -23,138 +26,7 @@
 </head>
 
 <body style="background: #efefef">
-  
-  <header style="background:white">
-    <div class="text-center">
-        <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner.jpg?v=372" class="img-fluid"
-          height="60">
-    </div>
-      <div class="container">
-        <div class="row justify-content-center align-items-center g-2">
-          <div class="col">
-            <a href="/" class="logo">
-              <img src="https://theme.hstatic.net/200000265619/1000946504/14/logo.png?v=372" alt="" class=".img-fluid"
-                 height="65">
-            </a>
-          </div>
-          <div class="col">
-            <form action="" class="input-search">
-              <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-              <span class="material-symbols-outlined search-icon" >
-                search
-              </span>
-            </form>
-          </div>
-          <div class="col">
-              <div id="hotline">
-                <div class="hotline-bar text-center">
-                  <p>Tư vấn bán hàng</p>
-                  <strong>Gọi ngay 19001093</strong>
-                  <div class="inline-block icon-hotline" id="icon-hotline">
-                    <span class="material-symbols-outlined" style="color:white;cursor: pointer">
-                      phone
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div id="account">
-                <div class="inline-block icon-hotline" >
-                  <span class="material-symbols-outlined" style="color:white;cursor: pointer;">
-                    person
-                  </span>
-                </div>
-                <div class="account-dropdown shadow p-3 mb-5 bg-body-tertiary rounded">
-                  <a href="#" class="btn btn-dark btn-account" >
-                    <span>Đăng nhập</span>
-                  </a>
-                  <a href="#" class="btn btn-dark btn-account">
-                    <span>Đăng ký</span>
-                  </a>
-                </div>
-              </div>
-              <div id="shopping-cart">
-                <a href="#a" >
-                  <div class="inline-block icon-hotline" >
-                    <span class="material-symbols-outlined" style="color:white;">
-                      shopping_cart_checkout
-                    </span>
-                  </div>
-                </a>
-                <div class="shopping-dropdown shadow p-3 mb-5 bg-body-tertiary rounded">
-                  <h6>Tổng tiền thanh toán:</h6>
-                  <a href="#" class="btn btn-dark" >
-                    <span>Giỏ hàng</span>
-                  </a>
-                  <a href="#" class="btn btn-secondary" >
-                    <span>Thanh toán</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-        </div>    
-      </div>
-      <div class="nav-bar">
-        <ul class="nav justify-content-center ">
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="background: #d0021b">
-                <strong>HOME PAGE</strong>
-              </a>
-            </li>
-            <li class="nav-item" style="position: relative">
-              <div class="link-brand">
-                <a class="nav-link" href="#" style="background: #d0021b;">
-                  <strong>BRAND</strong>
-                  <span class="material-symbols-outlined brand-expand" >
-                    expand_more
-                  </span>
-                </a>
-              </div>
-              <ul class="brand-dropdown shadow">
-                <li class="brand-type ">
-                  <a href="#b">
-                    CONVERSE
-                    <span class="material-symbols-outlined expand-left" >
-                      chevron_right
-                     </span>
-                  </a>
-                  <ul class="type-dropend shadow">
-                    <li class="brand-type ">
-                      <a href="#">
-                        CONVERSE
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="brand-type ">
-                  <a href="#">
-                    CONVERSE
-                    <span class="material-symbols-outlined expand-left" >
-                      chevron_right
-                     </span>
-                  </a>
-                  <ul class="type-dropend shadow">
-                    <li class="brand-type ">
-                      <a href="#">
-                        CONVERSE
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <strong>SPECIAL PRICE</strong>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <strong>ORDER</strong>
-              </a>
-            </li>
-        </ul>
-      </div>
-  </header>
+  @include('module.header')
   <main>
     <div id="slide" class="carousel slide" data-bs-ride="carousel">
       <!-- Indicators/dots -->
@@ -254,55 +126,64 @@
     <div class="container-fluid " align="center" style="padding-left:0;">
       <div class="row ">
         <div class="col-sm-6" style="padding-right:0">
-          <div class="category">
-            <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner_project_1.jpg?v=417" class="img-fluid">
-            <div class="caption" align="center">
-              <h2 style="font-weight: bold">CONVERSE</h2>
-              <p class="total-amount">312 Sản Phẩm</p>
+          <a href="#">
+            <div class="category">
+              <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner_project_1.jpg?v=417" class="img-fluid">
+              <div class="caption" align="center">
+                <h2 style="font-weight: bold">CONVERSE</h2>
+                <p class="total-amount">{{count($brandHome[0])}} sản phẩm</p>
+              </div>
             </div>
-          </div>
-          
+          </a>
         </div>
         <div class="col-sm-6" style="padding-right:0">
-          <div class="category">
-            <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner_project_2.jpg?v=417" class="img-fluid">
-            <div class="caption" align="center">
-              <h2 style="font-weight: bold">VANS</h2>
-              <p class="total-amount">312 sản phẩm</p>
+          <a href="">
+            <div class="category">
+              <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner_project_2.jpg?v=417" class="img-fluid">
+              <div class="caption" align="center">
+                <h2 style="font-weight: bold">VANS</h2>
+                <p class="total-amount">{{count($brandHome[1])}} sản phẩm</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-sm-4" style="padding-right:0;">
-          <div class="category">
-            <img src="https://cdn3.dhht.vn/wp-content/uploads/2021/10/3-15-cac-hang-giay-noi-tieng-ban-chay-nhat-tren-the-gioi.jpg"
-            class="img-fluid" style="height: 100%;" >
-            <div class="caption" align="center">
-              <h2 style="font-weight: bold">ADIDAS</h2>
-              <p class="total-amount">312 sản phẩm</p>
+          <a href="#">
+            <div class="category">
+              <img src="https://cdn3.dhht.vn/wp-content/uploads/2021/10/3-15-cac-hang-giay-noi-tieng-ban-chay-nhat-tren-the-gioi.jpg"
+              class="img-fluid" style="height: 100%;" >
+              <div class="caption" align="center">
+                <h2 style="font-weight: bold">ADIDAS</h2>
+                <p class="total-amount">{{count($brandHome[2])}} sản phẩm</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-sm-4" style="padding-right:0">
-          <div class="category">
-            <img src="https://fastsole.co.uk/wp-content/uploads/2021/05/Nike-Air-Max-Pre-Day-Summit-White-DA4263-100-on-foot-01.jpg" 
-            class="img-fluid" style="height: 100%">
-            <div class="caption" align="center">
-              <h2 style="font-weight: bold">NIKE</h2>
-              <p class="total-amount">312 sản phẩm</p>
+          <a href="#">
+            <div class="category">
+              <img src="https://fastsole.co.uk/wp-content/uploads/2021/05/Nike-Air-Max-Pre-Day-Summit-White-DA4263-100-on-foot-01.jpg" 
+              class="img-fluid" style="height: 100%">
+              <div class="caption" align="center">
+                <h2 style="font-weight: bold">NIKE</h2>
+                <p class="total-amount">{{count($brandHome[3])}} sản phẩm</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-sm-4" style="padding-right:0">
-          <div class="category">
-            <img src="https://cdn3.dhht.vn/wp-content/uploads/2021/10/5-15-cac-hang-giay-noi-tieng-ban-chay-nhat-tren-the-gioi.jpg" 
-            class="img-fluid" style="height: 100%">
-            <div class="caption" align="center">
-              <h2 style="font-weight: bold">BALENCIAGA</h2>
-              <p class="total-amount">312 sản phẩm</p>
+          <a href="#">
+            <div class="category">
+              <img src="https://cdn3.dhht.vn/wp-content/uploads/2021/10/5-15-cac-hang-giay-noi-tieng-ban-chay-nhat-tren-the-gioi.jpg" 
+              class="img-fluid" style="height: 100%">
+              <div class="caption" align="center">
+                <h2 style="font-weight: bold">BALENCIAGA</h2>
+                <p class="total-amount">{{count($brandHome[4])}} sản phẩm</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -329,7 +210,7 @@
                       <p class="prod-name">
                         Giày Converse Chuck Taylor All Star Classic Hi Top
                       </p>
-                      <p class="mb-3">Barcode: M3310V-3</p>
+                      <p class="mb-3">Barcode: M3310V-1</p>
                     </div>
                     <div class="card-footer" style="padding: 8px 10px">
                       <div class="row">
@@ -351,7 +232,7 @@
         </div>
       </div>
     </div>
-    <div class="product-list shadow" style="padding-top:0">
+    <div class="product-list shadow" style="padding-top:0;padding-right: 12px">
       <div class="row">
         <div class="col-sm-5">
           <img src="https://genk.mediacdn.vn/2019/7/20/sneak1-1563614762059880132043.jpg" class="img-fluid" style="height: auto;margin-bottom: 20px">
@@ -375,46 +256,48 @@
         <div class="owl-carousel owl-theme owl-loaded product">
           <div class="owl-stage-outer">
             <div class="owl-stage">
+              @foreach ($products as $product)
               <div class="owl-item">
                 <div class="item">
                   <div class="card">
                     <div class="card-header">
-                      <img src="img/01/img-01.jpg" class="img-fluid prod-img">
+                      <img src="/img/{{$product->product_id}}/{{explode(',',$product->product_image)[0]}}" class="img-fluid prod-img">
                       <div class="slide-img container-fluid">
-                        <img src="img/01/img-01.jpg" class="small-img img-fluid rounded">
-                        <img src="img/01/img-03.jpg" class="small-img img-fluid rounded">
-                        <img src="img/01/img-02.jpg" class="small-img img-fluid rounded">
-                        <img src="img/01/img-04.jpg" class="small-img img-fluid rounded">
-                        <img src="img/01/img-05.jpg" class="small-img img-fluid rounded">
+                        @foreach (explode(',',$product->product_image) as $image)
+                          <img src="/img/{{$product->product_id}}/{{$image}}" class="small-img img-fluid rounded">
+                        @endforeach
                       </div>
                     </div>
                     <div class="card-body">
-                      <p class="prod-name">
-                        Giày Converse Chuck Taylor All Star Classic Hi Top
-                      </p>
-                      <p class="mb-3">Barcode: M3310V-3</p>
+                      <a href="/products/{{$product->product_id}}">
+                        <p class="prod-name">{{$product->product_name}}</p>
+                      </a>
+                      <p class="mb-3">Barcode:{{ $product->product_id}}</p>
                     </div>
                     <div class="card-footer" style="padding: 8px 10px">
                       <div class="row">
                         <div class="col-sm-6">
-                          <h5 class="prod-price">1,550,000₫</h5>
+                          <h5 class="prod-price">{{$product->product_price}}₫</h5>
                         </div>
                         <div class="col-sm-6">
-                          <button class="btn btn-dark" style="padding: 8px 15px">
-                            Chi tiết
-                          </button>
+                          <a href="/products/{{$product->product_id}}">
+                            <button class="btn btn-dark" style="padding: 8px 15px">
+                              Chi tiết
+                            </button>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              @endforeach   
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="product-list shadow" style="padding-top:0">
+    <div class="product-list shadow" style="padding-top:0;padding-right: 12px">
       <div class="row">
         <div class="col-sm-7" style="padding: 40px 70px 50px 50px">
           <div class='title' style="padding-bottom: 25px">ADIDAS</div>
@@ -469,7 +352,7 @@
                       <p class="prod-name">
                         Giày Converse Chuck Taylor All Star Classic Hi Top
                       </p>
-                      <p class="mb-3">Barcode: M3310V-3</p>
+                      <p class="mb-3">Barcode: M3310V-2</p>
                     </div>
                     <div class="card-footer" style="padding: 8px 10px">
                       <div class="row">
@@ -491,7 +374,7 @@
         </div>
       </div>
     </div>
-    <div class="product-list shadow" style="padding-top:0">
+    <div class="product-list shadow" style="padding-top:0;padding-right: 12px">
       <div class="row">
         <div class="col-sm-5">
           <img src="https://topbrands.vn/wp-content/uploads/2021/01/Shop-giay-nike-chinh-hang-tphcm.jpg" class="img-fluid" style="height: auto;margin-bottom: 20px">
@@ -554,34 +437,9 @@
           </div>
         </div>
       </div>
-  </main>
-  <footer>
-    <div class="row">
-      <div class="col-sm-4">
-        <h6 style="font-weight: bolder">SNEAKER BUZZ</h6>
-        <p>Địa chỉ: Đại học Xây Dựng Hà Nội</p>
-        <p>Điện thoại: 0999999999</p>
-        <p>Email: DHXD@email.com</p>
-      </div>
-      <div class="col-sm-4" >
-        <h6 style="font-weight: bolder">DANH MỤC</h6>
-        <p>HOME PAGE</p>
-        <P>BRAND</P>
-        <P>SPECIAL PRICE</P>
-        <P>ORDER</P>
-      </div>
-      <DIV class="col-sm-4">
-        <h6 style="font-weight: bolder">CHÍNH SÁCH</h6>
-        <p>Điều khoản & điều kiện</p>
-        <p>Chính sách bảo mật</p>
-        <p>Chính sách giao hàng</p>
-        <p>Chính sách bảo hành</p>
-        <p>Phương thức thanh toán</p>
-        <p>Hướng dẫn đặt hàng</p>
-        <p>Liên hệ hợp tác</p>
-      </DIV>
     </div>
-  </footer>
+  </main>
+  @include('module.footer')
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

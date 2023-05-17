@@ -18,148 +18,65 @@
   <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 
   <link rel="stylesheet" href="{{asset('css/user/product.css')}}">
-  <link rel="stylesheet" href="{{asset('css/user/header.css')}}">
-  <link rel="stylesheet" href="{{asset('css/user/footer.css')}}">
+  <link rel="stylesheet" href="{{asset('css/module/header.css')}}">
+  <link rel="stylesheet" href="{{asset('css/module/footer.css')}}">
   <script src="{{asset('js/user/product.js')}}"></script>
 </head>
 <body>
-  <header>
-    <div class="text-center">
-        <img src="https://theme.hstatic.net/200000265619/1000946504/14/banner.jpg?v=372" class="img-fluid"
-          height="60">
-    </div>
-      <div class="container">
-        <div class="row justify-content-center align-items-center g-2">
-          <div class="col">
-            <a href="/" class="logo">
-              <img src="https://theme.hstatic.net/200000265619/1000946504/14/logo.png?v=372" alt="" class=".img-fluid"
-                 height="65">
-            </a>
-          </div>
-          <div class="col">
-            <form action="" class="input-search">
-              <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-              <span class="material-symbols-outlined search-icon" >
-                search
-              </span>
-            </form>
-          </div>
-          <div class="col">
-              <div id="hotline">
-                <div class="hotline-bar text-center">
-                  <p>Tư vấn bán hàng</p>
-                  <strong>Gọi ngay 19001093</strong>
-                  <div class="inline-block icon-hotline" id="icon-hotline">
-                    <span class="material-symbols-outlined" style="color:white;cursor: pointer">
-                      phone
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div id="account">
-                <div class="inline-block icon-hotline" >
-                  <span class="material-symbols-outlined" style="color:white;cursor: pointer;">
-                    person
-                  </span>
-                </div>
-                <div class="account-dropdown shadow p-3 mb-5 bg-body-tertiary rounded">
-                  <a href="#" class="btn btn-dark btn-account" >
-                    <span>Đăng nhập</span>
-                  </a>
-                  <a href="#" class="btn btn-dark btn-account">
-                    <span>Đăng ký</span>
-                  </a>
-                </div>
-              </div>
-              <div id="shopping-cart">
-                <a href="#a" >
-                  <div class="inline-block icon-hotline" >
-                    <span class="material-symbols-outlined" style="color:white;">
-                      shopping_cart_checkout
-                    </span>
-                  </div>
-                </a>
-                <div class="shopping-dropdown shadow p-3 mb-5 bg-body-tertiary rounded">
-                  <h6>Tổng tiền thanh toán:</h6>
-                  <a href="#" class="btn btn-dark" >
-                    <span>Giỏ hàng</span>
-                  </a>
-                  <a href="#" class="btn btn-secondary" >
-                    <span>Thanh toán</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-        </div>    
-      </div>
-      <div class="nav-bar">
-        <ul class="nav justify-content-center ">
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="background: #d0021b">
-                <strong>HOME PAGE</strong>
-              </a>
-            </li>
-            <li class="nav-item" style="position: relative">
-              <div class="link-brand">
-                <a class="nav-link" href="#" style="background: #d0021b;">
-                  <strong>BRAND</strong>
-                  <span class="material-symbols-outlined brand-expand" >
-                    expand_more
-                  </span>
-                </a>
-              </div>
-              <ul class="brand-dropdown shadow">
-                <li class="brand-type ">
-                  <a href="#b">
-                    CONVERSE
-                    <span class="material-symbols-outlined expand-left" >
-                      chevron_right
-                     </span>
-                  </a>
-                  <ul class="type-dropend shadow">
-                    <li class="brand-type ">
-                      <a href="#">
-                        CONVERSE
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="brand-type ">
-                  <a href="#">
-                    CONVERSE
-                    <span class="material-symbols-outlined expand-left" >
-                      chevron_right
-                     </span>
-                  </a>
-                  <ul class="type-dropend shadow">
-                    <li class="brand-type ">
-                      <a href="#">
-                        CONVERSE
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <strong>SPECIAL PRICE</strong>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <strong>ORDER</strong>
-              </a>
-            </li>
-        </ul>
-      </div>
-  </header>
+  @include('module.header')
   <main style="margin-top: 25px;padding-left: 10%">
+
+    {{-- Image --}}
+    <form id="image_upload" action="/updateImg/{{$product->product_id}}">
+      @csrf
+      <input type="file" name="img[]" class="input" id="img" @required(true)  accept="image/gif, image/jpeg, image/png" multiple>
+      <label for="img">
+        <div class="btn btn-primary">Choose Image</div>
+      </label>
+      <button class="btn btn-dark" type="submit">Submit</button>
+    </form>
+    <div id="preview" class="mt-3" style="background: #ccc; display:flex">
+      {{-- <ul class="preview">
+        <img src="{{asset('img/01/img-01.jpg')}}" class="img-fluid">
+        <div class="delBtn">
+          <span class="material-symbols-outlined">
+            close
+          </span>
+        </div>
+      </ul> --}}
+    </div>
+    
+    <script>
+      function deleteImg(e) { 
+        var data = $(e).siblings('img').attr('src').split("temp/");
+        
+        // alert(data[1]);
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+        });
+        $.ajax({
+          url: "/delTempImg",
+          type: "get",
+          data: {nameImg: data[1]},
+          success: function (response) {
+            // alert(response.path);
+            $(e).parent().attr("class","deleted");
+            $("ul").remove(".deleted");
+          },
+          error:function (response) {
+            alert("error");
+          }
+        });
+      }
+    </script>
+
+
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Brand</a></li>
-        <li class="breadcrumb-item"><a href="#">Converse</a></li>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">{{ucwords(strtolower($product->Brand_name))}}</a></li>
         <li class="breadcrumb-item active" aria-current="page" style="color: #d0021b !important">Giày Converse Chuck Taylor All Star Classic Hi Top</li>
       </ol>
     </nav>
@@ -168,12 +85,12 @@
       <div class="col-sm-8" style="background:white;">
         <div class="row">
           <div class="col-sm-6">
-            <img src="{{asset('img/01/img-01.jpg')}}" class="large-img">
+            <img src="/img/{{$product->product_id}}/{{explode(',',$product->product_image)[0]}}" class="large-img">
           </div>
           <div class="col-sm-6">
             <div class="owl-carousel owl-theme owl-loaded" style="width:90%; position: relative;">
               <div class="owl-stage-outer" style="height: 85px;" >
-                <div class="owl-stage">
+                {{-- <div class="owl-stage">
                   <div class="owl-item">
                     <div class="item">
                       <img src="{{asset('img/01/img-01.jpg')}}" class="small-img">
@@ -199,6 +116,15 @@
                       <img src="{{asset('img/01/img-05.jpg')}}" class="small-img">
                     </div>
                   </div>
+                </div> --}}
+                <div class="owl-stage">
+                  @foreach (explode(',',$product->product_image) as $image)
+                    <div class="owl-item">
+                      <div class="item">
+                        <img src="/img/{{$product->product_id}}/{{$image}}" class="small-img">
+                      </div>
+                    </div>
+                  @endforeach
                 </div>
               </div>
               <div class="owl-nav">
@@ -217,25 +143,21 @@
             </div>
             <div style="margin-top: 30px">
               <h4>
-                Giày Converse Chuck Taylor All Star Classic Hi Top
+                {{ $product->product_name}}
               </h4>
               <div class="status-line">
                 <span class="mgr-5"> Thương hiệu: </span>
-                <span class="mgr-10" style="color: #d0021b">
-                  Converse
-                </span>
+                <span class="mgr-10" style="color: #d0021b">{{ucwords(strtolower($product->Brand_name))}}</span>
                 <span class="mgr-10">|</span>
                 <span class="mgr-5">Kho: </span>
-                <span style="color: #d0021b">
-                  Còn hàng
-                </span>
+                <span style="color: #d0021b" id="status"></span>
               </div>
               <div class="status-line">
                 <span class="mgr-5">Barcode:</span>
-                <span> M3310V-3 </span>
+                <span> {{ $product->product_id}} </span>
               </div>
               <h2 class="price">
-                1,550,000₫
+                {{ $product->product_price}}₫
               </h2>
               <div>
                 <span style="font-size: 18px">KHUYẾN MÃI</span>
@@ -275,36 +197,42 @@
             </div>
             <div class="row" style="margin-top:20px">
               <h6 class="col-sm-2" style="margin-top: 8px">Size:</h6>
-              <div class="col-sm-1 size-box" style="border: 1px solid #d60f25;color: #d60f25;font-weight: 500" >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
-              <div class="size-box col-sm-1"  >35</div>
+              <div class="col-sm-1 size-box size-active">
+                <p>{{$sizes[0]->size_id}}</p>
+                <p style="display: none" class="amount">{{$sizes[0]->quantity}}</p>
+              </div>
+              @for ($i = 1; $i < count($sizes); $i++)
+                <div class="size-box col-sm-1" >
+                  <p>{{$sizes[$i]->size_id}}</p>
+                  <p style="display: none" class="amount">{{$sizes[$i]->quantity}}</p>
+                </div>
+              @endfor
             </div>
             <div class="material">
               <h6 style="margin-top: 8px">Chất liệu:</h6>
-              <div class="chat-lieu col-sm-"  >TEXTILE</div>
+              <div class="chat-lieu col-sm-">{{ $product->product_material}}</div>
             </div>
-            <div class="material">
-              <h6 style="margin-top: 8px">Số lượng:</h6>
-              <div class="btn-group">
-                <button class="button">-</button>
-                <input type="number" id="buy-amount" value="1" min="1">
-                <button class="button">+</button>
+            <form action="/cart/{{$product->product_id}}" method="get">
+              <div class="material" id="setAmount">
+                <h6 style="margin-top: 8px">Số lượng:</h6>
+                <div class="btn-group">
+                  <div class="button">
+                    <span class="material-symbols-outlined" style="font-size: 20px">
+                      remove
+                    </span>
+                  </div>
+                  <input type="number" id="buy-amount" value="1" min="1" required>
+                  <div class="button">
+                    <span class="material-symbols-outlined" style="font-size: 20px">
+                      add
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="material" style="justify-content: center">
-              <button class="buy-btn">MUA NGAY</button>
-            </div>
+              <div class="material" style="justify-content: center">
+                  <button type ='submit' class="buy-btn"></button>
+              </div>
+            </form>
           </div>
         </div>
         <div>
@@ -315,8 +243,10 @@
             <button class="tablinks col-sm-3 rounded-top" onclick="openTab(event, 'preserve')">Thông tin bảo quản</button>
           </div>
           <div id="description" class="tabcontent" style="display: block">
-            <p>Chuck 70 Summer Tone là một thiết kế độc đáo và tiên phong trong thế giới thời trang. Được cập nhật từ kiểu dáng cổ điển đã trở thành biểu tượng của thương hiệu, Chuck 70 Summer Tone mang đến sự kết hợp hoàn hảo giữa tính năng và kiểu dáng tương lai. Với thiết kế cao cổ trẻ trung và sử dụng chất vải tái chế thân thiện với môi trường, toát lên vẻ đẹp nổi bật và ôm trọn chân người dùng. Ngoài ra, phần đế cũng được chú trọng với đệm Ortholite cao cấp mang đến cho người dùng cảm giác nhẹ nhàng thoải mái trong mỗi bước chân</p>
-          </div>
+            <p>
+              {{ $product->product_des}}
+            </p>
+            </div>
           
           <div id="size-table" class="tabcontent">
             <img src="{{asset('img/size.jpg')}}" alt="" class="img-fluid">
@@ -360,7 +290,7 @@
           <tbody>
             <tr>
               <td>Barcode</td>
-              <td>M3310V</td>
+              <td>{{ $product->product_id}}</td>
             </tr>
             <tr>
               <td>Dòng sản phẩm</td>
@@ -372,7 +302,7 @@
             </tr>
             <tr>
               <td>Màu sắc</td>
-              <td>Black</td>
+              <td>{{ $product->product_color}}</td>
             </tr>
             <tr>
               <td>Chế độ bảo hành</td>
@@ -440,38 +370,9 @@
         </div>
       </div>
     </div>
-   </div>
-      
-      
-    
+   </div> 
   </main>
-  <footer>
-    <div class="row">
-      <div class="col-sm-4">
-        <h6 style="font-weight: bolder">SNEAKER BUZZ</h6>
-        <p>Địa chỉ: Đại học Xây Dựng Hà Nội</p>
-        <p>Điện thoại: 0999999999</p>
-        <p>Email: DHXD@email.com</p>
-      </div>
-      <div class="col-sm-4" >
-        <h6 style="font-weight: bolder">DANH MỤC</h6>
-        <p>HOME PAGE</p>
-        <P>BRAND</P>
-        <P>SPECIAL PRICE</P>
-        <P>ORDER</P>
-      </div>
-      <DIV class="col-sm-4">
-        <h6 style="font-weight: bolder">CHÍNH SÁCH</h6>
-        <p>Điều khoản & điều kiện</p>
-        <p>Chính sách bảo mật</p>
-        <p>Chính sách giao hàng</p>
-        <p>Chính sách bảo hành</p>
-        <p>Phương thức thanh toán</p>
-        <p>Hướng dẫn đặt hàng</p>
-        <p>Liên hệ hợp tác</p>
-      </DIV>
-    </div>
-  </footer>
+  @include('module.footer')
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
