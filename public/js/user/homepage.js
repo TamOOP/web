@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#logo').owlCarousel({
         loop: true,
         margin:10,
@@ -20,9 +21,9 @@ $(document).ready(function () {
             }
         }
         
-    })
+    });
     $('#hot-sale').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 20,
         nav: false,
         dots: false,
@@ -41,10 +42,10 @@ $(document).ready(function () {
                 items:5
             }
         }
-    })
+    });
 
     $('.product').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 20,
         nav: false,
         dots: false,
@@ -63,7 +64,7 @@ $(document).ready(function () {
                 items:5
             }
         }
-    })
+    });
     setInterval(()=>{
         $(".carousel-control-next-icon").click();
     }, 3000);
@@ -81,4 +82,5 @@ $(document).ready(function () {
         var link = $(e.delegateTarget).attr("src");
         $(e.delegateTarget).parent().siblings().attr("src", link);
     });
+    
 });

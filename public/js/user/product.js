@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    checkAmount();
+
     $('.owl-carousel').owlCarousel({
         loop:false,
         margin:10,
@@ -39,9 +41,9 @@ $(document).ready(function () {
         
     });
     $(".size-box").click(function (e) { 
-        $(e.delegateTarget).attr("style","border: 1px solid #d60f25;color: #d60f25;font-weight: 500");
-        $(e.delegateTarget).siblings("div").attr("style","border: 1px solid #c6cddb;color: #c6cddb;");
-        
+        $(e.delegateTarget).attr("class","size-active size-box");
+        $(e.delegateTarget).siblings("div").attr("class","size-box");
+        checkAmount();
     });
     $(".nav-info").click(function (e) { 
         const li = $(e.delegateTarget).parent();
@@ -49,20 +51,80 @@ $(document).ready(function () {
         $(e.delegateTarget).attr("class","nav-link nav-info-active");
     });
     $(".button").click(function (e) { 
-        var sign = $(e.delegateTarget).text();
+        var sign = $(e.delegateTarget).children('span').text().trim();
         var buy_value = Number($("#buy-amount").val());
-        if(sign == "+"){
+        if(sign == "add"){
             $("#buy-amount").val(buy_value + 1);
         }
         else{
-            if(buy_value != 1){
+            if(buy_value > 1){
                 $("#buy-amount").val(buy_value - 1);
             }
-            
+            else{
+                
+            }
         }
         
     });
+    
+
+    //ImageControll
+
+    $("#img").change(function (e) { 
+        e.preventDefault();
+        var formData = new FormData($("#image_upload")[0]);
+        $.ajax({
+            type: "POST",
+            url: "/upload",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+                for(var i = 0 ; i < response.path.length; i++){
+                    var ul = document.createElement('ul');
+                        ul.setAttribute("class","preview");
+                    var img = document.createElement("img");
+                        img.setAttribute("class","img-fluid");
+                        img.setAttribute("src",response.path[i]);
+                    var div = document.createElement("div");
+                        div.setAttribute("class","delBtn");
+                        div.setAttribute("onclick","deleteImg(this)");
+                    var span = document.createElement("span");
+                        span.setAttribute("class","material-symbols-outlined");
+                        span.innerHTML = "close";
+                    div.append(span);
+                    ul.append(img);
+                    ul.append(div);
+                    $("#preview").append(ul);
+                }
+                
+            },
+            error:function(response){
+                alert("error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+        });
+    });
+    const input = document.querySelector('.input');
+    input.style.opacity = 0;    
 });
+
+function checkAmount(){
+    var amount =$('.size-active').children('p.amount').html();
+    if(amount == 0){
+        $("#status").html('Hết hàng');
+        $('#setAmount').hide();
+        $('.buy-btn').html('Hết hàng');
+        $('.buy-btn').attr("class","buy-btn btn-disable");
+    }else{
+        $("#status").html('Còn hàng');
+        $('#setAmount').show();
+        $('.buy-btn').html('Mua ngay');
+        $('.buy-btn').attr("class","buy-btn btn-allow");
+    }
+}
+
 function openTab(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -76,3 +138,6 @@ function openTab(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
+  
+
+  

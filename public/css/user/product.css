@@ -107,12 +107,14 @@ a{
   align-items: center;
 }
 .size-box{
-  width: 40px !important;
+  display: flex;
+  justify-content: center;
+  width: 50px !important;
   margin-right: 10px;
-  margin-top: 8px;
   border: 1px solid #c6cddb;
   color: #c6cddb;
   cursor: pointer;
+  padding: 4px 0px;
 }
 .chat-lieu{
   border: 1px solid #d60f25 !important;
@@ -129,6 +131,9 @@ a{
   border: 1px solid #e5e6ec;
   font-weight: bolder;
   font-size: 15px;
+  padding: 3px 7px;
+  display: flex;
+  cursor: pointer;
 }
 .button:hover{
   background-color: white !important;
@@ -148,6 +153,16 @@ a{
   font-size: 16px;
   font-weight: bold;
   border-radius: 50px;
+  border: 1px solid black
+}
+.btn-allow:hover{
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+}
+.btn-disable{
+  opacity:0.5;
+  cursor: default !important;
 }
 .tab {
   margin: 50px 0 0 0;
@@ -188,3 +203,37 @@ a{
 }
 
 
+
+.preview{
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
+  position: relative;
+  padding: 0;
+  border: 1px solid #c6cddb;
+  background-color: rgb(244, 244, 244);
+  display: flex;
+  align-items: center;
+}
+.preview:hover .delBtn{
+  display: flex;
+}
+.delBtn{
+  display: none;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 3px;
+  border-radius: 50px;
+  align-items: center;
+}
+.delBtn:hover{
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.size-active{
+  border: 1px solid #d60f25;
+  color: #d60f25;
+  font-weight: 500;
+}
