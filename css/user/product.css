@@ -1,0 +1,239 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+li{
+  list-style-type: none;
+}
+p{
+  margin: 0px;
+}
+a{
+  text-decoration: none;
+}
+
+  .breadcrumb-item a{
+    color: black !important;
+    padding: 0 5px;
+  }
+  .breadcrumb-item a:hover{
+    color: #d0021b !important;
+  }
+  .large-img{
+    width: 100%;
+    max-width: 418px;
+    max-height: 418px;
+    border: 1px solid #e5e6ec;
+  }
+  .small-img{
+    width: 85px !important;
+    height: 85px;
+    border: 2px solid #eaebf3;
+    display: inline-block;
+  }
+  .small-img:hover{
+    border: 2px solid #d60f25;
+    cursor: pointer;
+  }
+
+  .owl-prev{
+    position: absolute;
+    top: 18px;
+    left: -40px;
+    width: 0px !important;
+    height: 0px !important;
+    background: white !important;
+    color: black !important;
+  }
+  .owl-next{
+    position: absolute;
+    top: 18px;
+    right: 0px;
+    width: 0px !important;
+    height: 0px !important;
+    background: white !important;
+    color: black !important;
+  }
+  .status-line{
+    display:flex;
+    justify-content: left;
+    margin-top: 15px'
+  }
+  .mgr-5{
+    margin-right: 5px;
+  }
+  .mgr-10{
+    margin-right: 10px
+  }
+  .price{
+    color: #d0021b;
+    font-weight: bolder;
+    margin: 10px 0 20px 0;
+  }
+  .promotion-item{
+    margin-top: 10px;
+  }
+  .rectangle{
+    position: relative;
+    background-color: #d60f25;
+    color: white;
+    padding: 3px 15px;
+    cursor: pointer;
+  }
+  .rectangle:after {
+    cursor: pointer;
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    top:0;
+    right: -9px;
+    border-top: 15px solid transparent;
+    border-left: 10px solid #d60f25;
+    border-bottom: 14px solid transparent;
+}
+.promotion-info{
+  display: none;
+  background-color: #f8f8f8;
+  padding: 10px 15px 20px 15px;
+}
+.material{
+  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.size-box{
+  display: flex;
+  justify-content: center;
+  width: 50px !important;
+  margin-right: 10px;
+  border: 1px solid #c6cddb;
+  color: #c6cddb;
+  cursor: pointer;
+  padding: 4px 0px;
+}
+.chat-lieu{
+  border: 1px solid #d60f25 !important;
+  color: #d60f25 !important;
+  padding: 5px 20px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.btn-group{
+  margin-left: 20px !important;
+}
+.button{
+  background-color: white;
+  border: 1px solid #e5e6ec;
+  font-weight: bolder;
+  font-size: 15px;
+  padding: 3px 7px;
+  display: flex;
+  cursor: pointer;
+}
+.button:hover{
+  background-color: white !important;
+  border: 1px solid #e5e6ec !important;
+}
+#buy-amount{
+  width: 50px; 
+  border: 1px solid #e5e6ec;
+  outline: none;
+  text-align: center;
+  padding: 0px 10px;
+}
+.buy-btn{
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  border: 1px solid black
+}
+.btn-allow:hover{
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+}
+.btn-disable{
+  opacity:0.5;
+  cursor: default !important;
+}
+.tab {
+  margin: 50px 0 0 0;
+  overflow: hidden;
+  border: none;
+  background-color: white;
+}
+
+.tablinks {
+  background-color: inherit;
+  float: left;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.2s;
+  font-size: 19px;
+}
+.tab button.active {
+  background-color: #d60f25;
+  color: white;
+}
+.tabcontent {
+  display: none;
+  padding: 15px 20px;
+  border: 1px solid #e5e6ec;
+}
+.proc-table thead tr th, .proc-table tbody tr td{
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 10px;
+}
+.box-product{
+  border: 1px solid #e5e6ec;
+  width: 70%;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+
+
+.preview{
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
+  position: relative;
+  padding: 0;
+  border: 1px solid #c6cddb;
+  background-color: rgb(244, 244, 244);
+  display: flex;
+  align-items: center;
+}
+.preview:hover .delBtn{
+  display: flex;
+}
+.delBtn{
+  display: none;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 3px;
+  border-radius: 50px;
+  align-items: center;
+}
+.delBtn:hover{
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.size-active{
+  border: 1px solid #d60f25;
+  color: #d60f25;
+  font-weight: 500;
+}
