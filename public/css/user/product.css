@@ -162,7 +162,13 @@ a{
 }
 .btn-disable{
   opacity:0.5;
-  cursor: default !important;
+  cursor: not-allowed !important;
+}
+#has-amount{
+  color: #757575;
+  font-weight: 500;
+  font-size:15px;
+  margin-left: 15px
 }
 .tab {
   margin: 50px 0 0 0;

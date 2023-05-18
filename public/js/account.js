@@ -30,23 +30,29 @@ $(document).ready(function () {
             data: formData,
             dataType: "json",
             success: function (response) {
-                if (response.success == 'true') {
-                    $('#form_password')[0].reset();
-                    $('#form_password').find('input').removeClass('input-error');
-                    $('.tr_error').hide();
-                    $('.success-screen').show();
-                    setTimeout(() => {
-                        $('.success-screen').fadeOut();
-                    }, 800);
+                if(response.redirect){
+                    window.location.href = response.redirect;
                 }
                 else{
-                    if (response.error == 'confirm') {
-                        errorInput('Mật khẩu mới và mật khẩu xác nhận không giống nhau','#tr_confirm');
+                    if (response.success == 'true') {
+                        $('#form_password')[0].reset();
+                        $('#form_password').find('input').removeClass('input-error');
+                        $('.tr_error').hide();
+                        $('.success-screen').show();
+                        setTimeout(() => {
+                            $('.success-screen').fadeOut();
+                        }, 800);
                     }
-                    if(response.error == 'pass'){
-                        errorInput('Mật khẩu hiện tại không chính xác, vui lòng thử lại','#tr_pass');
+                    else{
+                        if (response.error == 'confirm') {
+                            errorInput('Mật khẩu mới và mật khẩu xác nhận không giống nhau','#tr_confirm');
+                        }
+                        if(response.error == 'pass'){
+                            errorInput('Mật khẩu hiện tại không chính xác, vui lòng thử lại','#tr_pass');
+                        }
                     }
                 }
+                
             },
             error: function (response) {
                 alert('error');
@@ -73,11 +79,16 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (response) {
-                $('.success-screen').show();
-                setTimeout(() => {
-                    $('.success-screen').fadeOut();
-                }, 800);
-                $('#name_user').text(response.name);
+                if(response.redirect){
+                    window.location.href = response.redirect;
+                }
+                else{
+                    $('.success-screen').show();
+                    setTimeout(() => {
+                        $('.success-screen').fadeOut();
+                    }, 800);
+                    $('#name_user').text(response.name);
+                }
             },
             error: function (response) {
                 alert('error');

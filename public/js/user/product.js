@@ -41,6 +41,8 @@ $(document).ready(function () {
         
     });
     $(".size-box").click(function (e) { 
+        var size = $(e.delegateTarget).children(".size-id").text();
+        $('#i_size').attr('value', size);
         $(e.delegateTarget).attr("class","size-active size-box");
         $(e.delegateTarget).siblings("div").attr("class","size-box");
         checkAmount();
@@ -61,12 +63,16 @@ $(document).ready(function () {
                 $("#buy-amount").val(buy_value - 1);
             }
             else{
-                
+
             }
         }
-        
     });
     
+    $('#buy-amount').blur(function (e) { 
+        if(!$(e.delegateTarget).val()){
+            $(e.delegateTarget).val(1);
+        }
+    });
 
     //ImageControll
 
@@ -112,16 +118,19 @@ $(document).ready(function () {
 
 function checkAmount(){
     var amount =$('.size-active').children('p.amount').html();
+    $('#has-amount').text(amount + ' sản phẩm có sẵn');
     if(amount == 0){
         $("#status").html('Hết hàng');
         $('#setAmount').hide();
         $('.buy-btn').html('Hết hàng');
         $('.buy-btn').attr("class","buy-btn btn-disable");
+        $('.buy-btn').prop('disabled', true);
     }else{
         $("#status").html('Còn hàng');
         $('#setAmount').show();
         $('.buy-btn').html('Mua ngay');
         $('.buy-btn').attr("class","buy-btn btn-allow");
+        $('.buy-btn').prop('disabled', false);
     }
 }
 
