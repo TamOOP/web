@@ -113,3 +113,11 @@ Route::post('/cart/remove',[
     CartController::class,'removeProduct'
 ]);
 
+Route::post('/cart/updateSize',[
+    CartController::class,'updateSize'
+]);
+
+Route::post('/cart/selectProduct',[
+    CartController::class,'selectProduct'
+]);
+
