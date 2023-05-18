@@ -198,12 +198,12 @@
             <div class="row" style="margin-top:20px">
               <h6 class="col-sm-2" style="margin-top: 8px">Size:</h6>
               <div class="col-sm-1 size-box size-active">
-                <p>{{$sizes[0]->size_id}}</p>
+                <p class="size-id">{{$sizes[0]->size_id}}</p>
                 <p style="display: none" class="amount">{{$sizes[0]->quantity}}</p>
               </div>
               @for ($i = 1; $i < count($sizes); $i++)
                 <div class="size-box col-sm-1" >
-                  <p>{{$sizes[$i]->size_id}}</p>
+                  <p class='size-id'>{{$sizes[$i]->size_id}}</p>
                   <p style="display: none" class="amount">{{$sizes[$i]->quantity}}</p>
                 </div>
               @endfor
@@ -214,6 +214,7 @@
             </div>
             <form action="/cart/{{$product->product_id}}" method="get">
               <div class="material" id="setAmount">
+                <input type="hidden" name="size" id="i_size" value="{{$sizes[0]->size_id}}">
                 <h6 style="margin-top: 8px">Số lượng:</h6>
                 <div class="btn-group">
                   <div class="button">
@@ -221,13 +222,14 @@
                       remove
                     </span>
                   </div>
-                  <input type="number" id="buy-amount" value="1" min="1" required>
+                  <input type="number" id="buy-amount" name="amount" value="1" min="1" required>
                   <div class="button">
                     <span class="material-symbols-outlined" style="font-size: 20px">
                       add
                     </span>
                   </div>
                 </div>
+                <p id="has-amount">{{$sizes[0]->quantity}} sản phẩm có sẵn</p>
               </div>
               <div class="material" style="justify-content: center">
                   <button type ='submit' class="buy-btn"></button>
